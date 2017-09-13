@@ -1,0 +1,35 @@
+{
+    "name": "electron-gum",
+    "productName": "electron-gum",
+    "version": "1.0.0",
+    "description": "",
+    "license": "MIT",
+    "repository": "https://github.com/a-sync/electron-desktopCapturer",
+    "author": {
+        "name": "smith",
+        "email": "bill@microsoft.com",
+        "url": "http://devs.space"
+    },
+    "scripts": {
+        "test": "xo",
+        "start": "electron .",
+        "build": "electron-packager . --out=dist --asar --overwrite --all"
+    },
+    "dependencies": {
+        "electron-debug": "^1.4.0",
+        "electron-unhandled": "^0.2.0"
+    },
+    "devDependencies": {
+        "devtron": "^1.4.0",
+        "electron-packager": "^9.0.1",
+        "electron": "^1.8.0",
+        "xo": "^0.18.2"
+    },
+    "xo": {
+        "space": 4,
+        "envs": [
+            "node",
+            "browser"
+        ]
+    }
+}
