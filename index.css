@@ -3,9 +3,6 @@ body {
     padding: 0;
     margin: 0;
     background: #fefeff;
-}
-
-body {
     font-family: 'Helvetica Neue', Helvetica, sans-serif;
 }
 
@@ -14,7 +11,8 @@ header, section, footer {
 }
 
 #video {
-    border: 3px solid lightgray;
+    border: 2px solid lightgray;
+    width: 95vw;
 }
 
 #sources {

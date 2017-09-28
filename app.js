@@ -1,8 +1,10 @@
 'use strict';
 
 const sourcesDiv = document.getElementById('sources');
-//const videoDimensions = {width: 1920, height: 1080, frameRate: 30};
+const videoDimensions = [{width: 1920, height: 1080, frameRate: 30}];
 function getSources () {
+    const videoDimIndex = 0; // TODO
+
     getDeviceList('videoinput', (err, sources) => {
         if (err) {
             console.error('getDeviceList(videoinput)', err);
@@ -23,12 +25,12 @@ function getSources () {
                     video: {
                         mandatory: {
                             sourceId: vSource.deviceId,
-                            //minWidth: videoDimensions.width,
-                            //maxWidth: videoDimensions.width,
-                            //minHeight: videoDimensions.height,
-                            //maxHeight: videoDimensions.height,
-                            //minFrameRate: videoDimensions.frameRate,
-                            //maxFrameRate: videoDimensions.frameRate,
+                            minWidth: videoDimensions[videoDimIndex].width,
+                            maxWidth: videoDimensions[videoDimIndex].width,
+                            minHeight: videoDimensions[videoDimIndex].height,
+                            maxHeight: videoDimensions[videoDimIndex].height,
+                            minFrameRate: videoDimensions[videoDimIndex].frameRate,
+                            maxFrameRate: videoDimensions[videoDimIndex].frameRate,
                         }
                     }
                 });
