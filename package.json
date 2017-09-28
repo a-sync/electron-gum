@@ -13,8 +13,8 @@
     "scripts": {
         "test": "xo",
         "start": "electron .",
-        "build": "electron-packager . --out=dist --asar --overwrite --all",
-        "buildwin64": "electron-packager . --out=dist --asar --overwrite --platform=win32 --arch=x64"
+        "buildlinux": "electron-packager . --out=dist --asar --overwrite --platform=linux --arch=x64",
+        "buildwin": "electron-packager . --out=dist --asar --overwrite --platform=win32 --arch=x64"
     },
     "dependencies": {
         "electron-debug": "^1.4.0",
@@ -23,7 +23,7 @@
     "devDependencies": {
         "devtron": "^1.4.0",
         "electron-packager": "^9.0.1",
-        "electron": "^1.8.0",
+        "electron": "^1.7.8",
         "xo": "^0.18.2"
     },
     "xo": {
