@@ -1,7 +1,8 @@
 'use strict';
-const {app, ipcMain, BrowserWindow} = require('electron');
-//app.commandLine.appendSwitch('--allow-http-screen-capture');
-//app.commandLine.appendSwitch('--enable-usermedia-screen-capturing');
+const {app, ipcMain, BrowserWindow} = require('electron'); // eslint-disable-line no-unused-vars
+// Settings for screen capture
+// app.commandLine.appendSwitch('--allow-http-screen-capture');
+// app.commandLine.appendSwitch('--enable-usermedia-screen-capturing');
 
 // Adds debug features like hotkeys for triggering dev tools and reload
 require('electron-debug')();
@@ -18,6 +19,7 @@ function onClosed() {
 
 function createMainWindow() {
     const win = new BrowserWindow({
+        title: app.getName() + ' v' + app.getVersion(),
         width: 1280,
         height: 720,
         webPreferences: {
