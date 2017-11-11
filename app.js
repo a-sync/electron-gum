@@ -1,9 +1,52 @@
 'use strict';
 
-const sourcesDiv = document.getElementById('sources');
-const videoDimensions = [{width: 1920, height: 1080, frameRate: 30}];
+const video = document.getElementById('video');
+const constraintsSelect = document.getElementById('constraints');
+const videoDimensions = [
+    {width: 1920, height: 1080, frameRate: 30},
+    {width: 1280, height:  720, frameRate: 30},
+    {width:  640, height:  360, frameRate: 30}
+];
+
+videoDimensions.forEach((c, i) => {
+    let opt = document.createElement('option');
+    opt.value = i;
+    opt.innerHTML = c.width+'x'+c.height+'@'+c.frameRate;
+    constraintsSelect.appendChild(opt);
+});
+
+function setVideo (mediaConstraints) {
+    stopVideo();
+    navigator.mediaDevices.getUserMedia(mediaConstraints)
+        .then(stream => {
+            video.srcObject = stream;
+        })
+        .catch(err => {
+            alert(JSON.stringify(err, null, 2));
+            console.error('getUserMedia error', err);
+        });
+}
+
+function stopVideo () {
+    if (video.srcObject) {
+        video.srcObject.getTracks().forEach(t => {
+            t.stop();
+        });
+
+        video.srcObject = null;
+    }
+}
+
+video.ondblclick = function (e) {
+    if (video.className === '') {
+        video.className = 'rotated';
+    } else {
+        video.className = '';
+    }
+};
+
 function getSources () {
-    const videoDimIndex = 0; // TODO
+    const sourcesDiv = document.getElementById('sources');
 
     getDeviceList('videoinput', (err, sources) => {
         if (err) {
@@ -18,8 +61,10 @@ function getSources () {
             let item = document.createElement('div');
 
             let btn = document.createElement('button');
-            btn.textContent = `${vSource.label} (${vSource.deviceId})`;
+            btn.textContent = vSource.label;
+            btn.title = vSource.deviceId;
             btn.onclick = function () {
+                const videoDimIndex = parseInt(constraintsSelect.value);
                 setVideo({
                     audio: false,
                     video: {
@@ -59,33 +104,10 @@ function getDeviceList(kind, callback) {
             }
             callback(null, results);
         },
-        function (reason) {
-            let err = 'Unable to enumerate devices (' + reason + ')';
+        function (err) {
             console.error(err);
             callback(err);
         }
     );
 }
 
-const video = document.getElementById('video');
-function setVideo (mediaConstraints) {
-    navigator.mediaDevices.getUserMedia(mediaConstraints)
-        .then(stream => {
-            stopVideo();
-            video.srcObject = stream;
-        })
-        .catch(err => {
-            console.error('getUserMedia error', err);
-            throw err;
-        });
-}
-
-function stopVideo () {
-    if (video.srcObject) {
-        video.srcObject.getTracks().forEach(t => {
-            t.stop();
-        });
-
-        video.srcObject = null;
-    }
-}

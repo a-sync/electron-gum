@@ -12,7 +12,7 @@ header, section, footer {
 
 #video {
     border: 2px solid lightgray;
-    width: 95vw;
+    width: 92vw;
 }
 
 #sources {
@@ -33,4 +33,10 @@ header, section, footer {
 
 button {
     cursor: pointer;
+}
+
+#video.rotated {
+    transform: rotate(90deg);
+    transform-origin: bottom center;
+    width: 92vh;
 }
