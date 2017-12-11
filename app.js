@@ -40,7 +40,7 @@ function applyVideoConstraints() { // eslint-disable-line no-unused-vars
 
         console.log('applyVideoConstraints', c, track);
 
-        track.applyConstraints()
+        track.applyConstraints(c)
             .then(() => {
                 console.info('applyConstraints success!', track.getSettings());
             })
