@@ -2602,7 +2602,7 @@ var chromeShim = {
     var browserDetails = utils.detectBrowser(window);
     // shim addTrack and removeTrack.
     if (window.RTCPeerConnection.prototype.addTrack &&
-        browserDetails.version >= 63) {
+        browserDetails.version >= 64) {
       return;
     }
 
@@ -3773,14 +3773,16 @@ var firefoxShim = {
   },
 
   shimRemoveStream: function(window) {
-    if ('removeStream' in window.RTCPeerConnection.prototype) {
+    if (!window.RTCPeerConnection ||
+        'removeStream' in window.RTCPeerConnection.prototype) {
       return;
     }
     window.RTCPeerConnection.prototype.removeStream = function(stream) {
+      var pc = this;
       utils.deprecated('removeStream', 'removeTrack');
       this.getSenders().forEach(function(sender) {
         if (sender.track && stream.getTracks().indexOf(sender.track) !== -1) {
-          this.removeTrack(sender);
+          pc.removeTrack(sender);
         }
       });
     };
@@ -4080,7 +4082,7 @@ var safariShim = {
             this._localStreams.push(stream);
           }
         }
-        _addTrack.call(this, track, stream);
+        return _addTrack.call(this, track, stream);
       };
     }
     if (!('removeStream' in window.RTCPeerConnection.prototype)) {

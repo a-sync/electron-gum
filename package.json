@@ -1,7 +1,7 @@
 {
     "name": "electron-gum",
     "productName": "electron-gum",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "",
     "license": "MIT",
     "repository": "https://github.com/a-sync/electron-gum",
@@ -22,8 +22,8 @@
     },
     "devDependencies": {
         "devtron": "^1.4.0",
+        "electron": "^1.8.1",
         "electron-packager": "^9.1.0",
-        "electron": "^1.7.9",
         "xo": "^0.18.2"
     },
     "xo": {
