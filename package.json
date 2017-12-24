@@ -2,7 +2,7 @@
     "name": "electron-gum",
     "productName": "electron-gum",
     "version": "1.2.0",
-    "description": "",
+    "description": "Electron getUserMedia test tool",
     "license": "MIT",
     "repository": "https://github.com/a-sync/electron-gum",
     "author": {
@@ -13,8 +13,8 @@
     "scripts": {
         "test": "xo",
         "start": "electron .",
-        "buildlinux": "electron-packager . --out=dist --asar --overwrite --platform=linux --arch=x64",
-        "buildwin": "electron-packager . --out=dist --asar --overwrite --platform=win32 --arch=x64"
+        "buildx64linux": "electron-packager . --out=dist --asar --overwrite --platform=linux --arch=x64",
+        "buildx64win": "electron-packager . --out=dist --asar --overwrite --platform=win32 --arch=x64"
     },
     "dependencies": {
         "electron-debug": "^1.4.0",

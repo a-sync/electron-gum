@@ -75,7 +75,7 @@ function getSources() { // eslint-disable-line no-unused-vars
     getDeviceList('videoinput', (err, sources) => {
         if (err) {
             console.error('getDeviceList(videoinput)', err);
-            throw err;
+            alert(JSON.stringify(err, null, 2)); // eslint-disable-line no-alert
         }
 
         console.info('getDeviceList sources', JSON.stringify(sources, null, 2));
