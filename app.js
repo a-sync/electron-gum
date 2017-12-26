@@ -34,8 +34,8 @@ function applyVideoConstraints() { // eslint-disable-line no-unused-vars
     video.srcObject.getVideoTracks().forEach(track => {
         const c = {
             width: videoDimensions[videoDimIndex].width,
-            height: videoDimensions[videoDimIndex].height/* ,
-            frameRate: videoDimensions[videoDimIndex].frameRate */
+            height: videoDimensions[videoDimIndex].height,
+            frameRate: videoDimensions[videoDimIndex].frameRate
         };
 
         console.log('applyVideoConstraints', c, track);
