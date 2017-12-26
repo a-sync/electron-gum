@@ -88,18 +88,18 @@ function getSources() { // eslint-disable-line no-unused-vars
             btn.textContent = vSource.label;
             btn.title = vSource.deviceId;
             btn.onclick = function () {
-                // #const videoDimIndex = parseInt(constraintsSelect.value, 10);
+                const videoDimIndex = parseInt(constraintsSelect.value, 10);
                 setVideo({
                     audio: false,
                     video: {
                         mandatory: {
-                            sourceId: vSource.deviceId/* ,
+                            sourceId: vSource.deviceId,
                             minWidth: videoDimensions[videoDimIndex].width,
                             maxWidth: videoDimensions[videoDimIndex].width,
                             minHeight: videoDimensions[videoDimIndex].height,
                             maxHeight: videoDimensions[videoDimIndex].height,
                             minFrameRate: videoDimensions[videoDimIndex].frameRate,
-                            maxFrameRate: videoDimensions[videoDimIndex].frameRate */
+                            maxFrameRate: videoDimensions[videoDimIndex].frameRate
                         }
                     }
                 });
