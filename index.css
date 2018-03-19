@@ -12,7 +12,7 @@ header, section, footer {
 
 #video {
     border: 2px solid lightgray;
-    width: 92vw;
+    max-width: 92vw;
 }
 
 #sources {
