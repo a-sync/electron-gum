@@ -22,9 +22,9 @@ function setVideo(mediaConstraints) {
             video.srcObject = stream;
             console.info('getUserMedia success', stream.getVideoTracks()[0].getSettings());
         })
-        .catch(err => {
-            console.error('getUserMedia error', err);
-            alert(JSON.stringify(err, null, 2)); // eslint-disable-line no-alert
+        .catch(error => {
+            console.error('getUserMedia error', error);
+            alert(JSON.stringify(error, null, 2)); // eslint-disable-line no-alert
         });
 }
 
@@ -44,9 +44,9 @@ function applyVideoConstraints() { // eslint-disable-line no-unused-vars
             .then(() => {
                 console.info('applyConstraints success!', track.getSettings());
             })
-            .catch(err => {
-                console.error('applyConstraints error', err);
-                alert(JSON.stringify(err, null, 2)); // eslint-disable-line no-alert
+            .catch(error => {
+                console.error('applyConstraints error', error);
+                alert(JSON.stringify(error, null, 2)); // eslint-disable-line no-alert
             });
     });
 }
@@ -61,21 +61,21 @@ function stopVideo() {
     }
 }
 
-video.ondblclick = function () {
+video.addEventListener('dblclick', () => {
     if (video.className === '') {
         video.className = 'rotated';
     } else {
         video.className = '';
     }
-};
+});
 
 function getSources() { // eslint-disable-line no-unused-vars
     const sourcesDiv = document.getElementById('sources');
 
-    getDeviceList('videoinput', (err, sources) => {
-        if (err) {
-            console.error('getDeviceList(videoinput)', err);
-            alert(JSON.stringify(err, null, 2)); // eslint-disable-line no-alert
+    getDeviceList('videoinput', (error, sources) => {
+        if (error) {
+            console.error('getDeviceList(videoinput)', error);
+            alert(JSON.stringify(error, null, 2)); // eslint-disable-line no-alert
         }
 
         console.info('getDeviceList sources', JSON.stringify(sources, null, 2));
@@ -87,7 +87,7 @@ function getSources() { // eslint-disable-line no-unused-vars
             const btn = document.createElement('button');
             btn.textContent = vSource.label;
             btn.title = vSource.deviceId;
-            btn.onclick = function () {
+            btn.addEventListener('click', () => {
                 const videoDimIndex = parseInt(constraintsSelect.value, 10);
                 setVideo({
                     audio: false,
@@ -103,7 +103,7 @@ function getSources() { // eslint-disable-line no-unused-vars
                         }
                     }
                 });
-            };
+            });
 
             item.appendChild(btn);
             item.appendChild(document.createElement('br'));
@@ -128,9 +128,9 @@ function getDeviceList(kind, callback) {
             }
             callback(null, results);
         },
-        err => {
-            console.error(err);
-            callback(err);
+        error => {
+            console.error(error);
+            callback(error);
         }
     );
 }
