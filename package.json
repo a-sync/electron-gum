@@ -17,13 +17,13 @@
         "buildx64win": "electron-packager . --out=dist --asar --overwrite --platform=win32 --arch=x64"
     },
     "dependencies": {
-        "electron-debug": "^2.0.0",
-        "electron-unhandled": "^1.1.0"
+        "electron-debug": "^3.0.1",
+        "electron-unhandled": "^2.2.0"
     },
     "devDependencies": {
         "devtron": "^1.4.0",
-        "electron": "^3.0.0",
-        "electron-packager": "^12.1.2",
+        "electron": "^5.0.8",
+        "electron-packager": "^14.0.3",
         "xo": "^0.23.0"
     },
     "xo": {
