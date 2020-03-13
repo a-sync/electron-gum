@@ -19,7 +19,7 @@ function onClosed() {
 
 function createMainWindow() {
     const win = new BrowserWindow({
-        title: app.getName() + ' v' + app.getVersion(),
+        title: app.name + ' v' + app.getVersion(),
         width: 1280,
         height: 720,
         webPreferences: {
