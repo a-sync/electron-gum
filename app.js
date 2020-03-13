@@ -4,8 +4,12 @@ const video = document.getElementById('video');
 const constraintsSelect = document.getElementById('constraints');
 const videoDimensions = [
     {width: 1920, height: 1080, frameRate: 30},
+    {width: 1920, height: 1080, frameRate: 60},
     {width: 1280, height: 720, frameRate: 30},
-    {width: 640, height: 360, frameRate: 30}
+    {width: 1280, height: 720, frameRate: 60},
+    {width: 640, height: 360, frameRate: 30},
+    {width: 640, height: 360, frameRate: 60},
+    {width: 640, height: 360, frameRate: 120}
 ];
 
 videoDimensions.forEach((c, i) => {
@@ -28,7 +32,7 @@ function setVideo(mediaConstraints) {
         });
 }
 
-function applyVideoConstraints() { // eslint-disable-line no-unused-vars
+function applyVideoConstraints() {
     const videoDimIndex = parseInt(constraintsSelect.value, 10);
 
     video.srcObject.getVideoTracks().forEach(track => {
